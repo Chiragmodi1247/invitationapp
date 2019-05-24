@@ -97,13 +97,13 @@ export default function SignIn() {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="#" variant="body2">
+              <Link href="/forpas" variant="body2">
                 Forgot password?
               </Link>
             </Grid>
             <Grid item>
               {"Don't have an account? "}
-              <Link href="#" variant="body2">
+              <Link href="/reg" variant="body2">
                 {"Sign Up"}
               </Link>
             </Grid>

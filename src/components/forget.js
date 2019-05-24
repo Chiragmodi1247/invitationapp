@@ -43,7 +43,7 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(3, 0, 2),
     backgroundColor: Purp,
     borderRadius: 20,
-    marginBottom: 50,
+    marginBottom: 30,
     marginTop: 50
   }
 }));
@@ -81,7 +81,7 @@ export default function SignUp() {
             Reset Password
           </Button>
           {"Back to "}
-          <Link href="#" variant="body2">
+          <Link href="/log" variant="body2">
             {"Log In?"}
           </Link>
         </form>

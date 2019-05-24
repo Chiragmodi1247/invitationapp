@@ -107,7 +107,7 @@ export default function SignUp() {
             </Grid>
           </Grid> */}
           {"Already have an account? "}
-          <Link href="#" variant="body2">
+          <Link href="/log" variant="body2">
             {"Log In"}
           </Link>
         </form>
