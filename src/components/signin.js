@@ -7,34 +7,44 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import Background from "../assets/signin/bg.png";
+import avatar from "../assets/signin/avatar.png";
+
+const GREY = "#9E9E9E";
+const Purp = "#7E25B8";
 
 const useStyles = makeStyles(theme => ({
   "@global": {
     body: {
-      //      backgroundColor: theme.palette.common.white
-      backgroundImage: "url(../assets/signin/bg.png)"
+      backgroundImage: `url(${Background})`,
+      backgroundSize: "cover"
     }
   },
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(20),
     display: "flex",
     flexDirection: "column",
-    alignItems: "center"
+    alignItems: "center",
+    backgroundColor: theme.palette.common.white,
+    borderRadius: 10,
+    padding: 20,
+    boxShadow: `3px 3px 3px ${GREY}`
   },
   avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main
+    backgroundImage: `url(${avatar})`,
+    backgroundSize: "cover"
   },
   form: {
     width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(1)
   },
   submit: {
-    margin: theme.spacing(3, 0, 2)
+    margin: theme.spacing(3, 0, 2),
+    backgroundColor: Purp,
+    borderRadius: 20
   }
 }));
 
@@ -42,12 +52,10 @@ export default function SignIn() {
   const classes = useStyles();
 
   return (
-    <Container component="main" maxWidth="xs" className={classes.body}>
+    <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
+        <Avatar className={classes.avatar} />
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
