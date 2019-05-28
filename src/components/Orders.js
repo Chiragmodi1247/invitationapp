@@ -63,7 +63,9 @@ function FullWidthTabs() {
         <TabContainer dir={theme.direction}>
           <MaterialTableDemo />
         </TabContainer>
-        <TabContainer dir={theme.direction}>Item Two</TabContainer>
+        <TabContainer dir={theme.direction}>
+          <MaterialTableDemo />
+        </TabContainer>
       </SwipeableViews>
     </div>
   );

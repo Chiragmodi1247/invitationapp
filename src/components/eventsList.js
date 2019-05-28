@@ -2,62 +2,31 @@ import React from "react";
 import MaterialTable from "material-table";
 
 export default function MaterialTableDemo() {
-  const [state, setState] = React.useState({
+  const [state] = React.useState({
     columns: [
-      { title: "Name", field: "name" },
-      { title: "Surname", field: "surname" },
-      { title: "Birth Year", field: "birthYear", type: "numeric" },
-      {
-        title: "Birth Place",
-        field: "birthCity",
-        lookup: { 34: "İstanbul", 63: "Şanlıurfa" }
-      }
+      { title: "index", field: "index" },
+      { title: "Start", field: "sDate" },
+      { title: "End", field: "eDate", type: "date" },
+      { title: "Event", field: "event" },
+      { title: "Venue", field: "venue" }
     ],
     data: [
-      { name: "Mehmet", surname: "Baran", birthYear: 1987, birthCity: 63 },
       {
-        name: "Zerya Betül",
-        surname: "Baran",
-        birthYear: 2017,
-        birthCity: 34
+        index: "1",
+        sDate: "15/05/2019",
+        eDate: "18/05/2019",
+        event: "Wedding at Sharma's house",
+        venue: "Ahmedabad"
+      },
+      {
+        index: "2",
+        sDate: "21/05/2019",
+        eDate: "22/05/2019",
+        event: "Mahendi at Sharma's house",
+        venue: "Gandhinagar"
       }
     ]
   });
 
-  return (
-    <MaterialTable
-      title="Editable Example"
-      columns={state.columns}
-      data={state.data}
-      editable={{
-        onRowAdd: newData =>
-          new Promise(resolve => {
-            setTimeout(() => {
-              resolve();
-              const data = [...state.data];
-              data.push(newData);
-              setState({ ...state, data });
-            }, 600);
-          }),
-        onRowUpdate: (newData, oldData) =>
-          new Promise(resolve => {
-            setTimeout(() => {
-              resolve();
-              const data = [...state.data];
-              data[data.indexOf(oldData)] = newData;
-              setState({ ...state, data });
-            }, 600);
-          }),
-        onRowDelete: oldData =>
-          new Promise(resolve => {
-            setTimeout(() => {
-              resolve();
-              const data = [...state.data];
-              data.splice(data.indexOf(oldData), 1);
-              setState({ ...state, data });
-            }, 600);
-          })
-      }}
-    />
-  );
+  return <MaterialTable title="" columns={state.columns} data={state.data} />;
 }
