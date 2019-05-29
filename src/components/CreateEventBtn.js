@@ -1,33 +1,21 @@
 import React from "react";
-import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import Paper from "@material-ui/core/Paper";
 import Dialog from "@material-ui/core/Dialog";
 import Typography from "@material-ui/core/Typography";
-import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
-const GREY = "#9E9E9E";
-
 const useStyles = makeStyles(theme => ({
+  title: {
+    flexGrow: 1
+  },
   container: {
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4)
-  },
-  paper: {
-    padding: theme.spacing(2),
-    display: "flex",
-    overflow: "auto",
-    flexDirection: "column"
-  },
-  fixedHeight: {
-    height: 300
   }
 }));
 
@@ -42,15 +30,14 @@ function FormDialog() {
   function handleClose() {
     setOpen(false);
   }
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   return (
     <div>
-      <Button variant="text" color="inherit" onClick={handleClickOpen}>
+      <Button color="inherit" onClick={handleClickOpen}>
         <Typography
           component="h1"
           variant="h6"
-          color="inherit"
-          noWrap
+          //   color="inherit"
+          //   noWrap
           className={classes.title}
         >
           Create Event
@@ -121,10 +108,16 @@ function FormDialog() {
               justify="space-evenly"
               alignItems="center"
             >
-              <Button onClick={handleClose} color="primary">
+              <Button
+                onClick={handleClose}
+                style={{ backgroundColor: "#7E25B8", color: "#FFFFFF" }}
+              >
                 Save
               </Button>
-              <Button onClick={handleClose} color="primary">
+              <Button
+                onClick={handleClose}
+                style={{ backgroundColor: "#7E25B8", color: "#FFFFFF" }}
+              >
                 Save & Proceed
               </Button>
             </Grid>
