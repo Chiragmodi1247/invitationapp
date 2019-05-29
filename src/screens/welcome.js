@@ -9,10 +9,10 @@ function welcome() {
   return (
     <Router>
       <div>
-        <Route exact path="/log" component={signin} />
+        {/* <Route exact path="/log" component={signin} />
         <Route path="/reg" component={SignUp} />
-        <Route path="/forpas" component={forget} />
-        <Route path="/dash" component={Dashboard} />
+        <Route path="/forpas" component={forget} /> */}
+        <Route path="/" component={Dashboard} />
       </div>
     </Router>
   );
