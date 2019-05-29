@@ -1,5 +1,8 @@
 import React from "react";
 import clsx from "clsx";
+import Button from "@material-ui/core/Button";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
 import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Drawer from "@material-ui/core/Drawer";
@@ -14,11 +17,13 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import Person from "@material-ui/icons/Person";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import { mainListItems } from "../components/listItems";
 import Chart from "../components/Chart";
-import Deposits from "../components/Deposits";
-import Orders from "../components/Orders";
+import PieChart from "../components/PieChart";
+import EventsTable from "../components/EventsTable";
+import CreateEvent from "../components/CreateEventBtn";
 
 const drawerWidth = 240;
 const Purp = "#7E25B8";
@@ -54,7 +59,7 @@ const useStyles = makeStyles(theme => ({
     })
   },
   menuButton: {
-    marginRight: 36
+    marginRight: 12
   },
   menuButtonHidden: {
     display: "none"
@@ -105,6 +110,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function Dashboard() {
   const classes = useStyles();
+  const [anchorEl, setAnchorEl] = React.useState(null);
   const [open, setOpen] = React.useState(false);
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -112,6 +118,12 @@ export default function Dashboard() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  function handleClick(event) {
+    setAnchorEl(event.currentTarget);
+  }
+  function handleClose() {
+    setAnchorEl(null);
+  }
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
@@ -143,11 +155,27 @@ export default function Dashboard() {
           >
             Dashboard
           </Typography>
-          <IconButton color="inherit">
+          <CreateEvent />
+          <IconButton
+            color="inherit"
+            aria-owns={anchorEl ? "simple-menu" : undefined}
+            aria-haspopup="true"
+            onClick={handleClick}
+          >
             <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
+              <Person />
             </Badge>
           </IconButton>
+          <Menu
+            id="simple-menu"
+            anchorEl={anchorEl}
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+          >
+            <MenuItem onClick={handleClose}>Profile</MenuItem>
+            <MenuItem onClick={handleClose}>My account</MenuItem>
+            <MenuItem onClick={handleClose}>Logout</MenuItem>
+          </Menu>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -175,12 +203,12 @@ export default function Dashboard() {
             </Grid>
             <Grid item xs={12} md={4} lg={5}>
               <Paper className={fixedHeightPaper}>
-                <Deposits />
+                <PieChart />
               </Paper>
             </Grid>
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                <Orders />
+                <EventsTable />
               </Paper>
             </Grid>
           </Grid>

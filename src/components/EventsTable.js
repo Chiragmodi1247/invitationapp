@@ -6,7 +6,8 @@ import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
-import MaterialTableDemo from "./eventsList";
+import UpComing from "./UpComing";
+import PastEvent from "./PastEvent";
 
 function TabContainer({ children, dir }) {
   return (
@@ -61,10 +62,10 @@ function FullWidthTabs() {
         onChangeIndex={handleChangeIndex}
       >
         <TabContainer dir={theme.direction}>
-          <MaterialTableDemo />
+          <UpComing />
         </TabContainer>
         <TabContainer dir={theme.direction}>
-          <MaterialTableDemo />
+          <PastEvent />
         </TabContainer>
       </SwipeableViews>
     </div>
